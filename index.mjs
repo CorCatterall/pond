@@ -8,7 +8,7 @@ const startBalance = stdlib.parseCurrency(100);
 const accAPond = await stdlib.newTestAccount(startBalance);
 
 const startPond = await getBalance(accAPond);
-const availPond = stdlib.formatCurrency(startBalance) / 2;
+const availPond = stdlib.formatCurrency(startBalance) * 0.75;
 
 const accBob = await stdlib.newTestAccount(startBalance / 2);
 const startBob = await getBalance(accBob);
@@ -19,7 +19,7 @@ const fishVal = [];
 const remVal = [];
 let i = 0;
 do {
-  fishVal.push (Math.floor(Math.random() * availPond  ));
+  fishVal.push (Math.floor(Math.exp(Math.random()*-8 )* availPond +1 ));
   remVal.push (availPond - fishVal[i]);
   console.log(`The pool value is ${startPond}. Available is ${availPond}. The fish value is ${fishVal[i]}.
   Remaining is ${remVal[i]}. Bob has ${startBob}.`);
